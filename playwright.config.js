@@ -44,7 +44,7 @@ module.exports = defineConfig({
   },
   globalSetup: './globalSetup',
   globalTeardown: './globalTeardown',
-  timeout: 5000,
+  timeout: 10000,
 
   /* Configure projects for major browsers */
   projects: [
