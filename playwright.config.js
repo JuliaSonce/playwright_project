@@ -1,11 +1,10 @@
 // @ts-check
-const { defineConfig, devices } = require('@playwright/test');
 
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// require('dotenv').config();
+// const { defineConfig, devices } = require('@playwright/test');
+import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -49,25 +48,16 @@ module.exports = defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
-
-    {
       name: 'prod',
       use: {
         ...devices['Desktop Chrome'],
-        baseURL: 'https://qauto2.forstudy.space/',
+        baseURL: process.env.BASE_URL,
         httpCredentials: {
-          username: "guest",
-          password: "welcome2qauto",
+          username: process.env.USER_NAME,
+          password: process.env.PASSWORD,
         },
       },
-    },
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    }
 
     /* Test against mobile viewports. */
     // {
