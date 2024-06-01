@@ -4,7 +4,11 @@
 import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
 
-dotenv.config();
+
+dotenv.config({
+  path: `./.env.${process.env.ENV}`,
+});
+
 
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -48,13 +52,13 @@ module.exports = defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'prod',
+      name: 'prod1',
       use: {
         ...devices['Desktop Chrome'],
         baseURL: process.env.BASE_URL,
         httpCredentials: {
-          username: process.env.USER_NAME,
-          password: process.env.PASSWORD,
+          username: "guest",
+          password: "welcome2qauto",
         },
       },
     }
