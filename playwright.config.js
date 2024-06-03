@@ -5,7 +5,7 @@ import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
 import dotenvExpand from 'dotenv-expand';
 
-const envFile = `./env/.env.${process.env.ENV}`;
+const envFile = `./env/.env.${process.env.ENV || 'prod'}`;
 const envConfig = dotenv.config({ path: envFile });
 dotenvExpand.expand(envConfig);
 
