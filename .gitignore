@@ -1,0 +1,39 @@
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# Dependency directories
+node_modules/
+.bower_components/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Output directories
+dist/
+build/
+coverage/
+
+# Playwright specific
+test-results/
+playwright-report/
+playwright/.cache/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+
