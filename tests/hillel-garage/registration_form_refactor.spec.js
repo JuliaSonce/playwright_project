@@ -1,7 +1,8 @@
 import { test, expect } from '@playwright/test';
 import MainPage from '../../src/pageObjects/pages/MainPage';
 import SignUpForm from '../../src/pageObjects/components/SignUpForm';
-import HomePage from '../../src/pageObjects/pages/HomePage';
+import GaragePage from '../../src/pageObjects/pages/GaragePage';
+
 const { faker } = require('@faker-js/faker');
 
 
@@ -19,13 +20,14 @@ test.describe("Test Sing up form", () => {
     test.beforeEach(async ({ page }) => {
         mainPage = new MainPage(page);
         await mainPage.navigate();
+
     })
 
     test('Sign up form with correct data', async ({ page }) => {
-        await mainPage.clickSignUpBtn()
+        await mainPage.clickSignUpBtn();
         let formPageContainer = mainPage.modalRegistrationForm()
         let signUpForm = new SignUpForm(page, formPageContainer);
-        let garagePage = new HomePage(page)
+        let garagePage = new GaragePage(page)
         await signUpForm.fillData(newUser);
         await signUpForm.registrationBtnClick();
         await expect(page).toHaveURL(`https://qauto2.forstudy.space/panel/garage`);

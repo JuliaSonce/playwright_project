@@ -12,7 +12,7 @@ const newUser = {
 
 }
 
-const homePageLocators =
+const garagePageLocators =
 
 
     test.describe('Test Sing up form ', () => {

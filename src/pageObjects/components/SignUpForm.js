@@ -15,9 +15,6 @@ export default class SignUpForm extends BaseComponent {
     invalidPasswordFeedback = () => this.container.locator('.invalid-feedback');
     invalidEmailFeedback = () => this.container.locator('.invalid-feedback');
 
-
-
-
     //Action 
 
     async fillData(user) {

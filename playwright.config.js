@@ -40,7 +40,9 @@ module.exports = defineConfig({
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: process.env.BASE_URL,
     httpCredentials: {
+      // @ts-ignore
       username: process.env.USER_NAME,
+      // @ts-ignore
       password: process.env.PASSWORD,
     },
     screenshot: 'only-on-failure',
@@ -49,6 +51,8 @@ module.exports = defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
+
+  authSetup: './auth.setup',
   globalSetup: './globalSetup',
   globalTeardown: './globalTeardown',
   timeout: 10000,
@@ -56,11 +60,17 @@ module.exports = defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name: 'setup',
+      testMatch: /.*\auth.setup\.ts/
+    },
+
+    {
       name: 'Chrome',
       use: {
         ...devices['Desktop Chrome'],
-
+        storageState: 'playwright/.auth/user.json',
       },
+      dependencies: ['setup'],
     }
 
     /* Test against mobile viewports. */

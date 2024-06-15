@@ -1,3 +1,4 @@
+import { expect } from "playwright/test";
 import BasePage from "../BasePageClass.js";
 
 export default class MainPage extends BasePage {
@@ -14,4 +15,5 @@ export default class MainPage extends BasePage {
         await this.singUpBtn().click();
         return new MainPage(this.page)
     }
+
 }
