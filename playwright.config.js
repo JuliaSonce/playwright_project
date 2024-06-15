@@ -1,11 +1,18 @@
 // @ts-check
-const { defineConfig, devices } = require('@playwright/test');
 
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// require('dotenv').config();
+// const { defineConfig, devices } = require('@playwright/test');
+import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
+import dotenvExpand from 'dotenv-expand';
+
+const envFile = `./env/.env.${process.env.ENV || 'prod'}`;
+const envConfig = dotenv.config({ path: envFile });
+dotenvExpand.expand(envConfig);
+
+console.log("\n\n==================================================================")
+console.log(`Running tests with env: ${process.env.ENV} from file: ${envFile}`)
+console.log(`Current  base URL: ${process.env.BASE_URL}`)
+console.log("==================================================================\n\n")
 
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -31,10 +38,12 @@ module.exports = defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'https://qauto2.forstudy.space/',
+    baseURL: process.env.BASE_URL,
     httpCredentials: {
-      username: "guest",
-      password: "welcome2qauto",
+      // @ts-ignore
+      username: process.env.USER_NAME,
+      // @ts-ignore
+      password: process.env.PASSWORD,
     },
     screenshot: 'only-on-failure',
     video: 'off',
@@ -42,6 +51,8 @@ module.exports = defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
+
+  authSetup: './auth.setup',
   globalSetup: './globalSetup',
   globalTeardown: './globalTeardown',
   timeout: 10000,
@@ -49,25 +60,18 @@ module.exports = defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'setup',
+      testMatch: /.*\auth.setup\.ts/
     },
 
     {
-      name: 'prod',
+      name: 'Chrome',
       use: {
         ...devices['Desktop Chrome'],
-        baseURL: 'https://qauto2.forstudy.space/',
-        httpCredentials: {
-          username: "guest",
-          password: "welcome2qauto",
-        },
+        storageState: 'playwright/.auth/user.json',
       },
-    },
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+      dependencies: ['setup'],
+    }
 
     /* Test against mobile viewports. */
     // {

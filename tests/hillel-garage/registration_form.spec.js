@@ -3,6 +3,7 @@ const { test, expect } = require('@playwright/test');
 const { beforeEach } = require('node:test');
 const { faker } = require('@faker-js/faker');
 
+
 const newUser = {
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),
@@ -11,7 +12,7 @@ const newUser = {
 
 }
 
-const homePageLocators =
+const garagePageLocators =
 
 
     test.describe('Test Sing up form ', () => {
