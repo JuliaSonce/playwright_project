@@ -1,6 +1,6 @@
 
 const { test, expect } = require('../../fixtures/userGaragePage')
-import AddCar from '../../src/pageObjects/components/addCar';
+import AddCar from '../../src/pageObjects/components/AddCar';
 const car = {
     brand: "BMW",
     model: "X5",
