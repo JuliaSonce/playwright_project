@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import GaragePage from '../../src/pageObjects/pages/GaragePage';
-import AddCar from '../../src/pageObjects/components/addCar';
+import AddCar from '../../src/pageObjects/components/AddCar'
 const car = {
     brand: "BMW",
     model: "X5",

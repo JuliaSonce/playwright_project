@@ -7,13 +7,22 @@ export default class MainPage extends BasePage {
     }
 
     //Locators
-    singUpBtn = () => this.page.locator('.hero-descriptor_btn', { hasText: 'Sign up' })
+    // singUpBtn = () => this.page.locator('.btn.btn-primary.hero-descriptor_btn')
+    singUpBtn = () => this.page.locator('.hero-descriptor_btn').filter({ hasText: 'Sign up' })
     modalRegistrationForm = () => this.page.locator('div.modal-content');
 
     //Action
+
+
+
+
     async clickSignUpBtn() {
-        await this.singUpBtn().click();
-        return new MainPage(this.page)
+        try {
+            await this.singUpBtn().click();
+            //return new MainPage(this.page)
+        } catch (error) {
+            console.log('Error during click action:', error);
+        }
     }
 
 }

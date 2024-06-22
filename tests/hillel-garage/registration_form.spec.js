@@ -23,7 +23,7 @@
 //         })
 //         test('Sign up form with correct data ', async ({ page }) => {
 //             const signUpButton = page.locator('.hero-descriptor_btn', { hasText: 'Sign up' });
-//             await signUpButton.click();
+//             await signUpButton.click({ force: true });
 //             const modalRegistration = page.locator('div.modal-content');
 //             const nameInput = modalRegistration.locator('#signupName');
 //             const lastNameInput = modalRegistration.locator('input#signupLastName');

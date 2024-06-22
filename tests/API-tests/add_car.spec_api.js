@@ -1,10 +1,6 @@
 import { test, expect, request } from '@playwright/test';
 
-// const newCar = {
-//     "carBrandId": 1,
-//     "carModelId": 1,
-//     "mileage": 122
-// }
+
 const ENDPOINT_CREATE_CAR = '/api/cars'
 test.describe('API tests for adding cars to garage', () => {
     let apiContext;
@@ -72,8 +68,6 @@ test.describe('API tests for adding cars to garage', () => {
             status: 'error',
             message: 'Invalid car brand type'
         })
-        // expect(bodyResult.status).toBe("error");
-        // expect(bodyResult.message).toBe("Bad request");
         await page.goto('https://qauto2.forstudy.space/panel/garage');
     });
 

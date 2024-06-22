@@ -34,6 +34,8 @@ test('Change response body', async ({ page, request }) => {
     let garagePage = new GaragePage(page);
     const userName = await garagePage.registeredUserName().textContent();
     expect(userName).toContain(respObj.data.name)
+
+
     // on this page we have bug and last name is undefined 
     // because of this I change and check only Name
     // Origin data 
