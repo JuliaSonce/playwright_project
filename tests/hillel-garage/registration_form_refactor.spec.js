@@ -19,12 +19,12 @@
 //     let mainPage;
 //     test.beforeEach(async ({ page }) => {
 //         mainPage = new MainPage(page);
-//         await page.goto('/');
+//         await mainPage.navigate();
 
 //     })
 
 //     test('Sign up form with correct data', async ({ page }) => {
-//         await mainPage.clickSignUpBtn(page);
+//         await mainPage.clickSignUpBtn();
 //         let formPageContainer = mainPage.modalRegistrationForm()
 //         let signUpForm = new SignUpForm(page, formPageContainer);
 //         let garagePage = new GaragePage(page)
