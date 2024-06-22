@@ -16,6 +16,8 @@ export default class GaragePage extends BasePage {
     addCarModal = () => this.page.locator('.modal-content')
     carCards = () => this.page.locator('app-car > .car.jumbotron')
     alertPopUp = () => this.page.locator('.alert.alert-success')
+    registeredUserName = () => this.page.locator('.display-4.profile_name')
+
     //Action
     async clickAddCarrBtn() {
         await this.addCarrBtn().click();

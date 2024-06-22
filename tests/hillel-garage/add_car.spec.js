@@ -6,7 +6,7 @@ const car = {
     model: "X5",
     mileage: "200"
 }
-test.only('Add new car', async ({ page }) => {
+test('Add new car', async ({ page }) => {
     await page.goto('https://qauto2.forstudy.space/panel/garage');
     let garagePage = new GaragePage(page);
     await garagePage.clickAddCarrBtn();
